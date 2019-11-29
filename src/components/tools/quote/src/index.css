@@ -1,0 +1,39 @@
+.sk_editor-quote-icon svg {
+  transform: rotate(180deg);
+}
+
+.sk_editor-quote {
+  margin: 0;
+}
+
+.sk_editor-quote__text {
+  min-height: 158px;
+  margin-bottom: 10px;
+}
+
+.sk_editor-quote__caption {}
+
+.sk_editor-quote [contentEditable=true][data-placeholder]::before{
+  position: absolute;
+  content: attr(data-placeholder);
+  color: #707684;
+  font-weight: normal;
+  opacity: 0;
+}
+
+.sk_editor-quote [contentEditable=true][data-placeholder]:empty::before {
+  opacity: 1;
+}
+
+.sk_editor-quote [contentEditable=true][data-placeholder]:empty:focus::before {
+  opacity: 0;
+}
+
+
+.sk_editor-quote-settings {
+  display: flex;
+}
+
+.sk_editor-quote-settings .sk_editor-settings-button {
+  width: 50%;
+}

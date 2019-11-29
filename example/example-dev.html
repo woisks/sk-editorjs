@@ -1,0 +1,358 @@
+<!--
+ Use this page for debugging purposes.
+
+ Editor Tools are loaded as git-submodules.
+ You can pull modules by running `yarn pull_tools` and start experimenting.
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Editor.js 🤩🧦🤨 example</title>
+  <link href="assets/demo.css" rel="stylesheet">
+  <script src="assets/json-preview.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <style>
+    h1, h2, h3, h4, h5, h6 {
+      font-size: 100%;
+      font-weight: 400
+    }
+
+    body {
+      font-size: 15px;
+    }
+
+  </style>
+</head>
+<body>
+<div class="ce-example">
+  <div class="ce-example__header">
+    <a class="ce-example__header-logo" href="https://codex.so/editor">Editor.js 🤩🧦🤨</a>
+
+    <div class="ce-example__header-menu">
+      <a href="https://github.com/editor-js" target="_blank">Plugins</a>
+      <a href="https://editorjs.io/usage" target="_blank">Usage</a>
+      <a href="https://editorjs.io/configuration" target="_blank">Configuration</a>
+      <a href="https://editorjs.io/creating-a-block-tool" target="_blank">API</a>
+    </div>
+  </div>
+  <div class="ce-example__content _ce-example__content--small">
+    <div id="editorjs"></div>
+    <div class="ce-example__button" id="saveButton">
+      editor.save()
+    </div>
+  </div>
+  <div class="ce-example__output">
+    <pre class="ce-example__output-content" id="output"></pre>
+    <div class="ce-example__output-footer">
+      <a href="https://codex.so" style="font-weight: bold;">Made by CodeX</a>
+    </div>
+  </div>
+</div>
+<div>
+  <h1>h1标题</h1>
+  <h2>h2标题</h2>
+  <h3>h3标题</h3>
+  <h4>h4标题</h4>
+  <h5>h5标题</h5>
+  <h6>h6标题</h6>
+</div>
+
+
+<script src="../dist/editor.js"></script>
+
+<!-- Initialization -->
+<script>
+  /**
+   * Saving button
+   */
+  const saveButton = document.getElementById('saveButton');
+
+  /**
+   * To initialize the Editor, create a new instance with configuration object
+   * @see docs/installation.md for mode details
+   */
+  var editor = new EditorJS({
+    /**
+     * Wrapper of Editor
+     */
+    holder: 'editorjs',
+
+
+    tools: {
+      header: {
+        shortcut: 'CTRL+ALT+H',
+        config: {
+          placeholder: '请输入标题……'
+        },
+        toolbox: {
+          title: '标题'
+        }
+      },
+
+      linkTool: {
+        config: {
+          endpoint: 'http://api-services.test/passport/password/reset', // Your backend endpoint for url data fetching
+        }
+      },
+      image: {
+        config: {
+          endpoints: {
+            byFile: 'http://api-services.test/passport/login', // Your backend file uploader endpoint
+            byUrl: 'http://api-services.test/passport/login', // Your endpoint that provides uploading by Url
+          }
+        }
+      },
+
+      list: {
+        shortcut: 'CTRL+ALT+L'
+      },
+
+      quote: {
+        config: {
+          quotePlaceholder: 'Enter a quote',
+          captionPlaceholder: 'Quote\'s author',
+        },
+        shortcut: 'CTRL+ALT+O'
+      },
+
+      code: {
+        shortcut: 'CMD+SHIFT+C'
+      },
+
+      table: {
+        inlineToolbar: true,
+        shortcut: 'CMD+ALT+T'
+      },
+
+    },
+
+
+    /**
+     * Initial Editor data
+     */
+    data: {
+
+      "time": 1574863264235,
+      "blocks": [
+        {
+          "type": "header",
+          "data": {
+            "text": "Editor.js"
+          }
+        },
+        {
+          "type": "code",
+          "data": {
+            "code": "public DexPathList(ClassLoader definingContext, String dexPath,\n            String librarySearchPath, File optimizedDirectory) {\n    //.........\n    // splitDexPath 实现为返回 List<File>.add(dexPath)\n    // makeDexElements 会去 List<File>.add(dexPath) 中使用DexFile加载dex文件返回 Element数组\n    \nthis.dexElements =makeDexElements(splitDexPath(dexPath), optimizedDirectory,\n                                           suppressedExceptions, definingContext);\n    //.........\n}\npublic Class findClass(String name, List<Throwable> suppressed) {\n     //从element中获得代表Dex的 DexFile\n    for (Element element : dexElements) {\n        DexFile dex = element.dexFile;\n        if (dex != null) {\n            //查找class\n            Class clazz = dex.loadClassBinaryName(name,definingContext, suppressed);\n            if (clazz != null) {\n                return clazz;\n            }\n        }\n    }\n    if (dexElementsSuppressedExceptions != null) {\n        suppressed.addAll(Arrays.asList(dexElementsSuppressedExceptions));\n    }\n    return null;\n}"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "Hey. Meet the new Editor. On this page you can see it in action — try to edit this text. Source code of the page contains the example of connection and configuration."
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "这本书很全面，很细致~虽然第一遍看闭包，原型继承，函数作用域之类的可能看了又忘，不过从头到尾看一遍定能受益匪浅~前端必看书籍（PS：<b>看书重要的是喜欢和坚持，不可三天打鱼两天晒网，中途有不喜欢的可以跳过，不过最好通读一遍</b>）；"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "<b>你不知道的JavaScript（上卷，中卷）</b>："
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "这本书我是相见恨晚，<b>上卷把作用域讲解的非常透彻，包括函数作用域，作用域提升，闭包等；</b>和JavaScript高级程序相关内容比对着看会理解的比较透，再在实践中运用几次这部分知识基本上就掌握了；当然上卷还讲了对象，原型等知识，都写的很不错推荐精读；"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "相较上卷的惊艳，中卷我个人感觉一般，我一般是用到时再去看看，目前有印象的是对Promise的讲解；<b>喜欢就看完，开卷有益</b>；"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "<b>JavaScript设计模式：</b>"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "<b>这个名字的书有两本推荐都买了和JavaScript高级程序设计中继承部分的内容比较着看；</b>"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "推荐先看国内作者<b>张容铭</b>写的这本，因为这本书<b>写了很多目前常用的设计模式，如何用JS模拟类，模拟继承，多态以及常用的设计模式等</b>；"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "再说国外作者Addy osmani的这本，最好和另一本比对着看，这样有助于理解的更深刻；"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "<b>这五本书都看完，再有过React，Vue，JQuery等使用经验的话，基本上看看前端源码问题不大了；</b>"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "<b>JavaScript框架设计：</b>"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "这本书推荐上边的看完之后再看，这本书就是讲的前端这些框架大部分都是哪几个模块，通常用JS实现的方式是什么，对作用域，闭包这些理解不透彻看起来会很费力；"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "<b>说完这些那再说说其它的书籍：</b>"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "<b>首先还是那句话——开卷有益，如果什么书都看不下去可能你并不喜欢前端这个工作；</b>"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "言归正传：如果时间充裕的话我个人推荐看<b>深入理解计算机系统，</b>虽然这本书看似与前端关系不大，不过<b>看完它你应该会有醍醐灌顶之感；</b>"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "<b>再说说现在热门的React，Vue，Node：</b>"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "React——推荐<b>深入React技术栈</b>，虽然书里是15.0版本的React和现在15.3版本的React有很多都不一样了，不过作者很多见解思想还是很不错的；"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "Vue ——我手里边的是Vue.js权威指南，这本书的版本和现在线上的也有很多不同了，也能看看；"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "Node——朴灵写的<b>深入浅出Node.js我倒是很推荐，</b>虽然这些书都有书中的版本落后的硬伤，不过这本书中还讲了很多<b>后端常用知识，我个人感觉还不错；</b>"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "ReactNative——手里边有本ReactNative入门与实战，这本书的主要硬伤也是书中版本太落后了，而且现在ReactNative都推荐使用ES6语法了，这本书需要和线上对照着看；"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "再说说其它杂七杂八的书籍："
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "Web性能权威指南：<b>这本书很推荐，写了很多常用的优化技术</b>，我个人比较喜欢关于无线网络，移动网络部分，因为其它书中很少涉及（另外如果喜欢TCP，UDP等协议有时间可以看看Unix网络编程）；"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "锋利的JQuery：JQuery入门，乏善可陈；"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "数据结构与算法JavaScript描述：偏向于服务端，还不错的一本书，同时看看算法导论，效果更佳；"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "高性能JavaScript：我个人感觉一般，不如Web性能权威指南；"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "JavaScript语言精粹：虽然这本书很薄，但我还是推荐JavaScript高级程序设计，高程讲解更细致，更全面；"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "WebKit技术内幕：我记得当时应该是为了看看浏览器内核源码买的，这本书我看了看个人感觉一般，乏善可陈；"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "数学之美：吴军先生的书很推荐<b>，虽然与前端关系不大，可是对常用的搜索算法，语音识别，机器翻译，新闻分类，地图搜索等算法进行了介绍可以很好的开阔视野；</b>"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "浪潮之巅：也是吴军先生的书，<b>我个人很推荐，看一看计算机的发展史风起云涌，浪潮更迭</b>；"
+          }
+        },
+        {
+          "type": "header",
+          "data": {
+            "text": "写在最后"
+          }
+        },
+        {
+          "type": "paragraph",
+          "data": {
+            "text": "<b>计算机知识发展到今天其实已经非常博大精深了，仅凭三四个月或者半年的学习就想走向人生巅峰是不现实的，凭借一颗热爱的心，孜孜不倦的学习才能学有所成；个人感觉对计算机知识而言，最快的学习方式就是看经典书籍，越是大师之作往往越有一颗拳拳之心，倾囊相授；而计算机的飞速发展也正是一代又一代的人无私奉献，开放，包容才能铸就如今的辉煌；</b>最近懒得看书了，便写此文以激励我自己和大家；"
+          }
+        }
+      ],
+      "version": "2.15.1"
+
+    },
+    onReady: function () {
+      saveButton.click();
+    },
+    onChange: function () {
+      console.log('something changed');
+    }
+  });
+
+  /**
+   * Saving example
+   */
+  saveButton.addEventListener('click', function () {
+    editor.save().then((savedData) => {
+      cPreview.show(savedData, document.getElementById("output"));
+    });
+  });
+</script>
+</body>
+</html>

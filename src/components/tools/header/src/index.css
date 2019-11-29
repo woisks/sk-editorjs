@@ -1,0 +1,24 @@
+.sk_editor-header {
+  padding: 15px 0;
+  margin: 0;
+  line-height: 1.5;
+  outline: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.sk_editor-header[contentEditable=true][data-placeholder]::before {
+  position: absolute;
+  content: attr(data-placeholder);
+  color: #707684;
+  font-weight: normal;
+  opacity: 0;
+}
+
+.sk_editor-header[contentEditable=true][data-placeholder]:empty::before {
+  opacity: 1;
+}
+
+.sk_editor-header[contentEditable=true][data-placeholder]:empty:focus::before {
+  opacity: 0;
+}

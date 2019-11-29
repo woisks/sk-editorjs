@@ -1,0 +1,55 @@
+.sk_editor-toolbar {
+    background: #368be6;
+}
+
+.sk_editor-toolbar--hidden {
+    visibility: hidden;
+}
+
+.sk_editor-toolbar--hor {
+    width: 100%;
+    height: 21px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    position: absolute;
+    left: 0;
+    top: 1px;
+    z-index: 100;
+}
+
+.sk_editor-toolbar--ver {
+    height: 100%;
+    width: 21px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: -1px;
+    z-index: 100;
+}
+
+.sk_editor-toolbar__plus {
+    height: 21px;
+    width: 21px;
+    margin-top: 0;
+}
+
+.sk_editor-toolbar__plus--hor {
+    margin-left: -10px;
+}
+
+.sk_editor-toolbar__plus--ver {
+    margin-top: -10px;
+}
+
+.sk_editor-toolbar__shine-line--hor {
+    min-height: 1px;
+    width: 100%;
+}
+
+.sk_editor-toolbar__shine-line--ver {
+    min-width: 1px;
+    height: 100%;
+}

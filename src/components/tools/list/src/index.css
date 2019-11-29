@@ -1,0 +1,26 @@
+.sk_editor-list {
+    margin: 0;
+    padding-left: 40px;
+    outline: none;
+}
+
+.sk_editor-list__item {
+    padding: 5.5px 0 5.5px 3px;
+    line-height: 1.6em;
+}
+
+.sk_editor-list--unordered {
+    list-style: disc;
+}
+
+.sk_editor-list--ordered {
+    list-style: decimal;
+}
+
+.sk_editor-list-settings {
+    display: flex;
+}
+
+.sk_editor-list-settings .sk_editor-settings-button {
+    width: 50%;
+}
